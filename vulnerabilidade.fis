@@ -1,0 +1,69 @@
+[System]
+Name='vulnerabilidade'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=25
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='socioeconomica'
+Range=[0 1]
+NumMFs=5
+MF1='muitobaixa':'gaussmf',[0.1062 0]
+MF2='baixa':'gaussmf',[0.1062 0.25]
+MF3='media':'gaussmf',[0.1062 0.5]
+MF4='alta':'gaussmf',[0.1062 0.75]
+MF5='muitoalta':'gaussmf',[0.1062 1]
+
+[Input2]
+Name='EfeitoIntegracao'
+Range=[0 1]
+NumMFs=5
+MF1='naoexiste':'trimf',[-0.1111 0 0.01111]
+MF2='baixa':'trapmf',[0.0165 0.059 0.220476706392199 0.281]
+MF3='media':'trapmf',[0.237 0.295 0.462 0.530335861321777]
+MF4='alta':'trapmf',[0.478 0.551 0.713 0.775189599133261]
+MF5='muitoalta':'trapmf',[0.729 0.819 1 1.13]
+
+[Output1]
+Name='vulnerabilidade'
+Range=[0 1]
+NumMFs=5
+MF1='naoexiste':'trimf',[-0.25 0 0.01]
+MF2='baixa':'gaussmf',[0.1062 0.25]
+MF3='media':'gaussmf',[0.1062 0.501083423618635]
+MF4='alta':'gaussmf',[0.1062 0.75]
+MF5='muitoalta':'gaussmf',[0.1062 1]
+
+[Rules]
+1 2, 2 (0.95) : 1
+2 2, 2 (1) : 1
+3 2, 2 (0.9) : 1
+4 2, 3 (0.9) : 1
+5 2, 4 (0.8) : 1
+1 3, 2 (0.85) : 1
+2 3, 2 (0.9) : 1
+3 3, 3 (1) : 1
+4 3, 3 (0.95) : 1
+5 3, 4 (0.9) : 1
+1 4, 3 (0.7) : 1
+2 4, 3 (0.9) : 1
+3 4, 3 (0.95) : 1
+4 4, 4 (1) : 1
+5 4, 5 (0.9) : 1
+1 5, 3 (0.8) : 1
+2 5, 4 (0.8) : 1
+3 5, 4 (0.9) : 1
+4 5, 5 (0.9) : 1
+5 5, 5 (1) : 1
+1 1, 1 (1) : 1
+2 1, 1 (1) : 1
+3 1, 1 (1) : 1
+4 1, 1 (1) : 1
+5 1, 1 (1) : 1

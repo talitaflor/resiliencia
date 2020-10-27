@@ -1,0 +1,69 @@
+[System]
+Name='nivelfluxo'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=25
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='potencialdeuso'
+Range=[0 0.92]
+NumMFs=5
+MF1='muitobaixo':'gaussmf',[0.0977 0]
+MF2='baixo':'gaussmf',[0.0977 0.23]
+MF3='medio':'gaussmf',[0.0977 0.46]
+MF4='alto':'gaussmf',[0.0977 0.69]
+MF5='muitoalto':'gaussmf',[0.0977 0.92]
+
+[Input2]
+Name='impedancia'
+Range=[0 0.92]
+NumMFs=5
+MF1='muitobaixa':'gaussmf',[0.0977 0]
+MF2='baixa':'gaussmf',[0.0977 0.23]
+MF3='media':'gaussmf',[0.0977 0.46]
+MF4='alta':'gaussmf',[0.0977 0.69]
+MF5='muitoalta':'gaussmf',[0.0977 0.92]
+
+[Output1]
+Name='niveldefluxo'
+Range=[0 1]
+NumMFs=5
+MF1='muitobaixo':'gaussmf',[0.1062 0]
+MF2='baixo':'gaussmf',[0.1062 0.25]
+MF3='medio':'gaussmf',[0.1062 0.5]
+MF4='alto':'gaussmf',[0.1062 0.751083423618635]
+MF5='muitoalto':'gaussmf',[0.1062 1]
+
+[Rules]
+1 1, 2 (0.9) : 1
+1 2, 2 (0.95) : 1
+1 3, 2 (1) : 1
+1 4, 1 (0.95) : 1
+1 5, 1 (1) : 1
+2 1, 3 (0.85) : 1
+2 2, 3 (0.9) : 1
+2 3, 3 (0.95) : 1
+2 4, 2 (0.85) : 1
+2 5, 1 (0.95) : 1
+3 1, 4 (0.85) : 1
+3 2, 4 (0.8) : 1
+3 3, 3 (1) : 1
+3 4, 3 (0.8) : 1
+3 5, 2 (0.85) : 1
+4 1, 5 (0.95) : 1
+4 2, 4 (0.85) : 1
+4 3, 4 (0.8) : 1
+4 4, 3 (0.9) : 1
+4 5, 3 (0.75) : 1
+5 1, 5 (1) : 1
+5 2, 5 (0.95) : 1
+5 3, 4 (0.95) : 1
+5 4, 4 (0.9) : 1
+5 5, 4 (0.85) : 1

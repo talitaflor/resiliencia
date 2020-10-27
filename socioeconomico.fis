@@ -1,0 +1,75 @@
+[System]
+Name='socioeconomico'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=30
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='empregoorigem'
+Range=[0 630000]
+NumMFs=6
+MF1='muitobaixo':'trapmf',[0 0 14670 19380]
+MF2='baixo':'trapmf',[19380 19450 31980 33920]
+MF3='medio':'trapmf',[33340 38560 66590 69200]
+MF4='alto':'trapmf',[65180 76760 115300 129900]
+MF5='muitoalto':'trapmf',[126000 135700 339200 436200]
+MF6='extremamentealto':'trapmf',[387700 436200 630000 630000]
+
+[Input2]
+Name='IDS'
+Range=[0.28 0.82]
+NumMFs=5
+MF1='muitobaixo':'trapmf',[0.28 0.28 0.3375 0.3662]
+MF2='baixo':'trapmf',[0.3375 0.3662 0.4237 0.4522]
+MF3='medio':'trapmf',[0.4237 0.4522 0.5672 0.5959]
+MF4='alto':'trapmf',[0.5672 0.5959 0.6821 0.7108]
+MF5='muitoalto':'trapmf',[0.6821 0.7108 0.82 0.82]
+
+[Output1]
+Name='socioeconomica'
+Range=[0 1]
+NumMFs=5
+MF1='muitobaixo':'gaussmf',[0.1062 0]
+MF2='baixo':'gaussmf',[0.1062 0.25]
+MF3='medio':'gaussmf',[0.1062 0.5]
+MF4='alto':'gaussmf',[0.1062 0.75]
+MF5='muitoalto':'gaussmf',[0.1062 1]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 1 (0.95) : 1
+1 3, 2 (0.85) : 1
+1 4, 3 (0.7) : 1
+1 5, 3 (0.8) : 1
+2 1, 2 (0.95) : 1
+2 2, 2 (1) : 1
+2 3, 2 (0.9) : 1
+2 4, 3 (0.9) : 1
+2 5, 4 (0.8) : 1
+3 1, 2 (0.85) : 1
+3 2, 3 (0.9) : 1
+3 3, 3 (1) : 1
+3 4, 3 (0.95) : 1
+3 5, 4 (0.9) : 1
+4 1, 3 (0.7) : 1
+4 2, 3 (0.9) : 1
+4 3, 4 (0.95) : 1
+4 4, 4 (1) : 1
+4 5, 5 (0.8) : 1
+5 1, 3 (0.8) : 1
+5 2, 3 (0.7) : 1
+5 3, 4 (0.9) : 1
+5 4, 5 (0.8) : 1
+5 5, 5 (0.85) : 1
+6 1, 4 (0.85) : 1
+6 2, 4 (0.95) : 1
+6 3, 5 (0.85) : 1
+6 4, 5 (0.95) : 1
+6 5, 5 (1) : 1

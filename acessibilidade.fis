@@ -1,0 +1,82 @@
+[System]
+Name='acessibilidade'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=36
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='emprego1tarifa'
+Range=[184 1770000]
+NumMFs=6
+MF1='muitobaixo':'trapmf',[184 184 27420 54640]
+MF2='baixo':'trapmf',[54640 62810 90030 95480]
+MF3='medio':'trapmf',[90030 95480 163600 190800]
+MF4='alto':'trapmf',[190800 218000 326900 381300]
+MF5='muitoalto':'trapmf',[354100 381300 953200 1225000]
+MF6='extremamentealto':'trapmf',[1089000 1225000 1770000 1770000]
+
+[Input2]
+Name='emprego60min'
+Range=[0 1830000]
+NumMFs=6
+MF1='muitobaixo':'trapmf',[0 0 28160 56310]
+MF2='baixo':'trapmf',[56310 64760 92910 98530]
+MF3='medio':'trapmf',[92910 98530 168900 197100]
+MF4='alto':'trapmf',[197100 225300 337900 394100]
+MF5='extremamentealto':'trapmf',[1126000 1267000 1830000 1830000]
+MF6='muitoalto':'trapmf',[366000 394100 985300 1267000]
+
+[Output1]
+Name='acessibilidade'
+Range=[0 1]
+NumMFs=5
+MF1='muitobaixa':'gaussmf',[0.1062 0]
+MF2='baixa':'gaussmf',[0.1062 0.25]
+MF3='medio':'gaussmf',[0.1062 0.5]
+MF4='alta':'gaussmf',[0.1062 0.75]
+MF5='muitoalta':'gaussmf',[0.1062 1]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 1 (0.95) : 1
+1 3, 2 (0.95) : 1
+1 4, 2 (0.8) : 1
+1 6, 3 (0.7) : 1
+1 5, 4 (0.8) : 1
+2 1, 1 (0.95) : 1
+2 2, 2 (1) : 1
+2 3, 3 (0.85) : 1
+2 4, 3 (0.95) : 1
+2 6, 4 (0.7) : 1
+2 5, 4 (0.85) : 1
+3 1, 2 (0.95) : 1
+3 2, 3 (0.85) : 1
+3 3, 3 (1) : 1
+3 4, 3 (0.95) : 1
+3 6, 4 (0.9) : 1
+3 5, 4 (0.95) : 1
+4 1, 2 (0.8) : 1
+4 2, 3 (0.9) : 1
+4 3, 3 (0.95) : 1
+4 4, 4 (1) : 1
+4 6, 5 (0.8) : 1
+4 5, 5 (0.85) : 1
+5 1, 3 (0.7) : 1
+5 2, 3 (0.7) : 1
+5 3, 4 (0.9) : 1
+5 4, 5 (0.8) : 1
+5 6, 5 (0.85) : 1
+5 5, 5 (0.95) : 1
+6 1, 4 (0.8) : 1
+6 2, 4 (0.85) : 1
+6 3, 4 (0.95) : 1
+6 4, 5 (0.85) : 1
+6 6, 5 (0.95) : 1
+6 5, 5 (1) : 1
